@@ -28,7 +28,7 @@ function Demony:new(scr, x, y, limiter)
     self.flipSpd = 0.4
     self.spd = 3
     self.limiter = limiter
-    self.maxMovement = 100
+    self.maxMovement = 200
 end
 
 function Demony:update(dt)
@@ -40,13 +40,17 @@ function Demony:update(dt)
     -- Limit player movement.
     if (self.limiter) then
         if (player.x > self.x + self.maxMovement) then
-            player.canMove = false
-        elseif (player.x < self.x - self.maxMovement) then
-            player.canMove = false
-        elseif (player.y > self.y + self.maxMovement) then
-            player.canMove = false
-        elseif (player.y < self.y - self.maxMovement) then
-            player.canMove = false
+            --player.canMove = false
+            flux.to(player, 1, {x = self.x})
+        elseif (player.x < self.x - self.maxMovement/1.7) then
+            --player.canMove = false
+            flux.to(player, 1, {x = self.x})
+        elseif (player.y > self.y + self.maxMovement/1.3) then
+            --player.canMove = false
+            flux.to(player, 1, {y = self.y + self.sprH})
+        elseif (player.y < self.y - self.maxMovement/1.3) then
+            --player.canMove = false
+            flux.to(player, 1, {y = self.y - self.sprH})
         else
             player.canMove = true
         end
