@@ -42,15 +42,19 @@ function Demony:update(dt)
         if (player.x > self.x + self.maxMovement) then
             --player.canMove = false
             flux.to(player, 1, {x = self.x})
+            self.scr.assets.sfx["bounce"]:play()
         elseif (player.x < self.x - self.maxMovement/1.7) then
             --player.canMove = false
             flux.to(player, 1, {x = self.x})
+            self.scr.assets.sfx["bounce"]:play()
         elseif (player.y > self.y + self.maxMovement/1.3) then
             --player.canMove = false
             flux.to(player, 1, {y = self.y + self.sprH})
+            self.scr.assets.sfx["bounce"]:play()
         elseif (player.y < self.y - self.maxMovement/1.3) then
             --player.canMove = false
             flux.to(player, 1, {y = self.y - self.sprH})
+            self.scr.assets.sfx["bounce"]:play()
         else
             player.canMove = true
         end
