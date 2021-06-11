@@ -16,6 +16,7 @@ function Player:new(scr, x, y)
     self.flipSpd = 0.4
     self.spd = 150
     self.moving = false
+    self.canMove = true
 
     -- Create sprite.
     self.sprite = scr.assets.sprites["drkarlovisky"]
@@ -37,21 +38,23 @@ function Player:update(dt)
 
     -- Movement.
     self.moving = false
-    if (love.keyboard.isDown("up")) then
-        self.moving = true
-        self.y = self.y - self.spd * dt
-    elseif (love.keyboard.isDown("down")) then
-        self.moving = true
-        self.y = self.y + self.spd * dt
-    end
-    if (love.keyboard.isDown("left")) then
-        self.moving = true
-        self.x = self.x - self.spd * dt
-        flux.to(self, self.flipSpd, {flip = 1})
-    elseif (love.keyboard.isDown("right")) then
-        self.moving = true
-        self.x = self.x + self.spd * dt
-        flux.to(self, self.flipSpd, {flip = -1})
+    if (self.canMove) then
+        if (love.keyboard.isDown("up")) then
+            self.moving = true
+            self.y = self.y - self.spd * dt
+        elseif (love.keyboard.isDown("down")) then
+            self.moving = true
+            self.y = self.y + self.spd * dt
+        end
+        if (love.keyboard.isDown("left")) then
+            self.moving = true
+            self.x = self.x - self.spd * dt
+            flux.to(self, self.flipSpd, {flip = 1})
+        elseif (love.keyboard.isDown("right")) then
+            self.moving = true
+            self.x = self.x + self.spd * dt
+            flux.to(self, self.flipSpd, {flip = -1})
+        end
     end
 
     -- Collision resolution.
@@ -72,7 +75,8 @@ function Player:draw()
         love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
     end
 
-    -- Draw sprite.
+    -- Draw sprite centered and above
+    -- the collision box.
     self.anim.current:draw(
         self.sprite, 
         (self.x + self.sprW/2) - (self.sprW/2 - self.w/2), 
