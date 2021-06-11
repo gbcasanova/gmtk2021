@@ -24,6 +24,7 @@ local function loadAssets()
 
     -- Sound effects.
     assets.sfx = {}
+    assets.sfx["coin"] = love.audio.newSource("assets/sfx/coin.wav", "static")
     assets.sfx["bounce"] = love.audio.newSource("assets/sfx/bounce.ogg", "static")
 
     return assets

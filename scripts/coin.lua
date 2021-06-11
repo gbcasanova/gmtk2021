@@ -33,6 +33,7 @@ function Coin:update(dt)
     if CheckCollision(self.x, self.y, self.w, self.h, player.x, player.y, player.w, player.h) then
         for i, v in pairs(self.scr.objects) do
             if (v == self) then
+                self.scr.assets.sfx["coin"]:play()
                 table.remove(self.scr.objects, i)
             end
         end
