@@ -26,8 +26,12 @@ function Player:new(scr, x, y)
     -- Create animations.
     self.anim = {}
     self.anim["idle"]    = anim8.newAnimation(g('1-4', 1), 0.1)
-    self.anim["walking"] = anim8.newAnimation(g('1-3', 2), 0.1)
+    self.anim["walking"] = anim8.newAnimation(g('1-3', 2), 0.05)
     self.anim.current = self.anim["idle"]
+
+    -- Camera.
+    self.camVar = {}
+    self.camVar.x, self.camVar.y = 0, 0
 
     scr.world:add(self, self.x, self.y, self.w, self.h) -- Add to collision world.
 end
@@ -66,6 +70,12 @@ function Player:update(dt)
     else
         self.anim.current = self.anim["idle"]
     end
+
+    -- Smooth Camera.
+    flux.to(self.camVar, 0.5, {x = self.x})
+    flux.to(self.camVar, 0.5, {y = self.y})
+
+    self.scr.camera:setPosition(self.camVar.x, self.camVar.y)
 end
 
 function Player:draw()
