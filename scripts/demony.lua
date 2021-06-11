@@ -8,7 +8,7 @@ local Entity = require("scripts.entity")
 
 local Demony = Entity:extend()
 
-function Demony:new(scr, x, y)
+function Demony:new(scr, x, y, limiter)
     Demony.super.new(self, scr, x, y, 34, 35)
 
     -- Sprite.
@@ -26,13 +26,30 @@ function Demony:new(scr, x, y)
     self.flip = 1
     self.flipSpd = 0.4
     self.spd = 3
+    self.limiter = limiter
+    self.maxMovement = 100
 end
 
 function Demony:update(dt)
     Demony.super.update(self, dt)
     self.anim.current:update(dt)
 
-    -- Limit player movement;
+    local player = self.scr.objects.player
+
+    -- Limit player movement.
+    if (self.limiter) then
+        if (player.x > self.x + self.maxMovement) then
+            player.canMove = false
+        elseif (player.x < self.x - self.maxMovement) then
+            player.canMove = false
+        elseif (player.y > self.y + self.maxMovement) then
+            player.canMove = false
+        elseif (player.y < self.y - self.maxMovement) then
+            player.canMove = false
+        else
+            player.canMove = true
+        end
+    end
 
     -- Move towards player.
     flux.to(self, self.spd, {x = self.scr.objects.player.x})
@@ -48,6 +65,8 @@ function Demony:update(dt)
     elseif (self.scr.objects.player.x < self.x) then
         flux.to(self, self.flipSpd, {flip = -1})
     end
+
+    -- Collision with player
 end
 
 function Demony:draw()
