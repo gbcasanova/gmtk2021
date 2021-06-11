@@ -28,6 +28,7 @@ local function puts(str, reqVeryVerbosePerms)
 end
 
 local gameStates = { -- this is where you set the directories of your screens
+	["level"] = require("screens.level");
 	["exampleScreen"] = require("screens.exampleScreen");
 }
 
