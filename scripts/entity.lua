@@ -1,5 +1,5 @@
 -- Libs.
-local Object = require("scripts.classic")
+local Object = require("libs.classic")
 -----------------------------------------
 
 local Entity = Object:extend()
