@@ -10,6 +10,7 @@ local Demony = Entity:extend()
 
 function Demony:new(scr, x, y, limiter)
     Demony.super.new(self, scr, x, y, 34, 35)
+    self.name = "Demony"
 
     -- Sprite.
     self.sprite = scr.assets.sprites["demony"]
@@ -67,6 +68,12 @@ function Demony:update(dt)
     end
 
     -- Collision with player
+    for i=1,len do -- If more than one simultaneous collision, they are sorted out by proximity
+        local col = cols[i]
+        if (col.other.name == "Player") then
+            --print("GAME OVER")
+        end
+    end
 end
 
 function Demony:draw()
