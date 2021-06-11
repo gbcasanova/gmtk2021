@@ -7,6 +7,7 @@ function love.load()
     _G.gameDebug = true
 
     -- Set up screen.
+    love.graphics.setDefaultFilter("nearest", "nearest") -- Set's pixel art filter.
     _G.gameWidth, _G.gameHeight = 384, 216
     local windowWidth, windowHeight = _G.gameWidth*3, _G.gameHeight*3
     _G.push:setupScreen(_G.gameWidth, _G.gameHeight, windowWidth, windowHeight, {
@@ -14,7 +15,6 @@ function love.load()
         resizable  = true,
         stretched  = false
     })
-    love.graphics.setDefaultFilter("nearest", "nearest") -- Set's pixel art filter.
 
     ScreenManager:SwitchStates("level")
 end
