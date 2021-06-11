@@ -20,18 +20,29 @@ function Demony:new(scr, x, y)
     self.anim = {}
     self.anim["idle"]    = anim8.newAnimation(g('1-4', 1), 0.1)
     self.anim["walking"] = anim8.newAnimation(g('1-4', 2), 0.1)
-    self.anim.current = self.anim["idle"]
+    self.anim.current = self.anim["walking"]
 
-    -- Flip.
+    -- Animations.
     self.flip = 1
     self.flipSpd = 0.4
+    self.spd = 3
 end
 
 function Demony:update(dt)
     Demony.super.update(self, dt)
     self.anim.current:update(dt)
 
-    -- Flip.
+    -- Limit player movement;
+
+    -- Move towards player.
+    flux.to(self, self.spd, {x = self.scr.objects.player.x})
+    flux.to(self, self.spd, {y = self.scr.objects.player.y})
+
+    -- Collision resolution.
+    local actualX, actualY, cols, len = self.scr.world:move(self, self.x, self.y)
+    self.x, self.y = actualX, actualY
+
+    -- Flip animation.
     if (self.scr.objects.player.x > self.x) then
         flux.to(self, self.flipSpd, {flip = 1})
     elseif (self.scr.objects.player.x < self.x) then
@@ -43,10 +54,10 @@ function Demony:draw()
     Demony.super.draw(self)
 
     love.graphics.line(
-        self.x, 
-        self.y, 
-        self.scr.objects.player.x, 
-        self.scr.objects.player.y
+        (self.x + self.sprW/2), 
+        (self.y + self.sprH/2), 
+        self.scr.objects.player.x + 3, 
+        self.scr.objects.player.y + 6
     )
 
     -- Draw sprite centered and above
