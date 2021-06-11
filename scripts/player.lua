@@ -1,5 +1,6 @@
 -- Libs.
-local anim8 = require("libs.anim8")
+local flux   = require("libs.flux")
+local anim8  = require("libs.anim8")
 local Object = require("libs.classic")
 --------------------------------------
 
@@ -9,8 +10,11 @@ function Player:new(scr, x, y)
     self.scr = scr
     self.x, self.y = x, y
     self.w, self.h = 30, 65
-    self.spd = 1
+    self.spd = 150
     self.name = "Player"
+    
+    self.flip = 1
+    self.flipSpd = 0.2
 
     -- Create sprite.
     self.sprite = scr.assets.sprites["drkarlovisky"]
@@ -26,18 +30,21 @@ function Player:new(scr, x, y)
 end
 
 function Player:update(dt)
+    flux.update(dt)
     self.anim.current:update(dt)
 
     -- Movement.
     if (love.keyboard.isDown("up")) then
-        self.y = self.y - self.spd
+        self.y = self.y - self.spd * dt
     elseif (love.keyboard.isDown("down")) then
-        self.y = self.y + self.spd
+        self.y = self.y + self.spd * dt
     end
     if (love.keyboard.isDown("left")) then
-        self.x = self.x - self.spd
+        self.x = self.x - self.spd * dt
+        flux.to(self, self.flipSpd, {flip = 1})
     elseif (love.keyboard.isDown("right")) then
-        self.x = self.x + self.spd
+        self.x = self.x + self.spd * dt
+        flux.to(self, self.flipSpd, {flip = -1})
     end
 
 
@@ -49,11 +56,18 @@ end
 function Player:draw()
     -- Draw debug outline.
     if (_G.gameDebug) then
-        love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
+        love.graphics.rectangle("line", self.x, self.y, self.w, self.h, 0, 0)
     end
 
     -- Draw sprite.
-    self.anim.current:draw(self.sprite, self.x, self.y)
+    self.anim.current:draw(
+        self.sprite, 
+        self.x + self.w/2, 
+        self.y + self.h/2, 
+        0, self.flip, 1, 
+        self.w/2,
+        self.h/2
+    )
 end
 
 return Player
