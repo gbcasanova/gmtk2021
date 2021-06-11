@@ -72,8 +72,8 @@ function Player:update(dt)
     end
 
     -- Smooth Camera.
-    flux.to(self.camVar, 0.5, {x = self.x})
-    flux.to(self.camVar, 0.5, {y = self.y})
+    flux.to(self.camVar, 0.5, {x = (self.x + self.sprW/2) - (self.sprW/2 - self.w/2)})
+    flux.to(self.camVar, 0.5, {y = (self.y + self.sprH/2) - (self.sprH - self.h)})
 
     self.scr.camera:setPosition(self.camVar.x, self.camVar.y)
 end
