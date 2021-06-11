@@ -60,16 +60,16 @@ function Demony:update(dt)
     flux.to(self, self.spd, {x = self.scr.objects.player.x})
     flux.to(self, self.spd, {y = self.scr.objects.player.y})
 
-    -- Collision resolution.
-    local actualX, actualY, cols, len = self.scr.world:move(self, self.x, self.y)
-    self.x, self.y = actualX, actualY
-
     -- Flip animation.
     if (self.scr.objects.player.x > self.x) then
         flux.to(self, self.flipSpd, {flip = 1})
     elseif (self.scr.objects.player.x < self.x) then
         flux.to(self, self.flipSpd, {flip = -1})
     end
+
+    -- Collision resolution.
+    local actualX, actualY, cols, len = self.scr.world:move(self, self.x, self.y)
+    self.x, self.y = actualX, actualY
 
     -- Collision with player
     for i=1,len do -- If more than one simultaneous collision, they are sorted out by proximity
