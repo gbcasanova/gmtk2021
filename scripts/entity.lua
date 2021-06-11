@@ -8,6 +8,9 @@ function Entity:new(scr, x, y, w, h)
     self.x, self.y = x, y
     self.w, self.h = w, h
 
+    self.name = "Entity"
+    self.scr = scr
+
     -- Add to collision world.
     scr.world:add(self, self.x, self.y, self.w, self.h)
 end
