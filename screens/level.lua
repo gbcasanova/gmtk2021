@@ -40,7 +40,10 @@ function screen:Load(ScreenManager)
     self.objects = {}
     self.objects.player = Player(self, 100, 100)
     table.insert(self.objects, Entity(self, 10, 10, 32, 32))
+
     table.insert(self.objects, Demony(self, 50, 50))
+    table.insert(self.objects, Demony(self, 50+34, 50))
+    table.insert(self.objects, Demony(self, 50+34*2, 50))
 end
 
 function screen:Update(dt)
