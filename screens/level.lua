@@ -1,8 +1,10 @@
 -- Libs.
 local bump = require("libs.bump")
 local flux = require("libs.flux")
+local cartographer = require("libs.cartographer")
 
 -- Scripts.
+local mapStuff = require("scripts.mapStuff")
 local Entity = require("scripts.entity")
 local Demony = require("scripts.demony")
 local Player = require("scripts.player")
@@ -39,15 +41,17 @@ function screen:Load(ScreenManager)
 
     self.objects = {}
     self.objects.player = Player(self, 100, 100)
-    table.insert(self.objects, Entity(self, 10, 10, 32, 32))
+    self.map = cartographer.load("assets/tilemaps/level.lua")
+    mapStuff.createSolids(self, self.map, self.map.layers.Solid, self.objects)
 
     table.insert(self.objects, Demony(self, 50, 50, false))
-    table.insert(self.objects, Demony(self, 50+34, 50, true))
+    table.insert(self.objects, Demony(self, 50+34, 50, false))
     table.insert(self.objects, Demony(self, 50+34*2, 50, false))
 end
 
 function screen:Update(dt)
     flux.update(dt)
+    self.map:update(dt)
 
     -- Update objects.
     for i, v in pairs(self.objects) do
@@ -56,6 +60,8 @@ function screen:Update(dt)
 end
 
 function screen:Draw()
+    self.map:draw()
+
     -- Draw objects.
     table.sort(self.objects, sortVertically)
     for i, v in pairs(self.objects) do
