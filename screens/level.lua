@@ -15,8 +15,9 @@ local function loadAssets()
 
     -- Sprites.
     assets.sprites = {}
-    assets.sprites["drkarlovisky"] = love.graphics.newImage("assets/sprites/drkarlovisky.png")
     assets.sprites["demony"] = love.graphics.newImage("assets/sprites/demony.png")
+    assets.sprites["tileset"] = love.graphics.newImage("assets/sprites/tileset.png")
+    assets.sprites["drkarlovisky"] = love.graphics.newImage("assets/sprites/drkarlovisky.png")
 
     -- Music.
     assets.music = {}
@@ -47,6 +48,7 @@ function screen:Load(ScreenManager)
     self.world = bump.newWorld()
     self.objects.player = Player(self, 100, 100)
     self.map = cartographer.load("assets/tilemaps/level.lua")
+    mapStuff.createObjects(self, self.map, self.map.layers.Objects, self.objects)
     mapStuff.createSolids(self, self.map, self.map.layers.Solid, self.objects)
 
     table.insert(self.objects, Demony(self, 50, 50, false))

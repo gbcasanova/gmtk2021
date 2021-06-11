@@ -1,5 +1,6 @@
 -- Scripts.
 local Entity = require("scripts.entity")
+local Coin = require("scripts.coin")
 ----------------------------------------
 
 local mapStuff = {}
@@ -23,10 +24,10 @@ function mapStuff.createObjects(screen, map, layer, objsTable)
     -- Iterate through every object.
     for i, v in pairs(layer.objects) do
         local obj = v.type -- Get object name.
-        local y = v.y - 16 -- Y origin.
+        local y = v.y - 32 -- Y origin.
 
         -- Create objects.
-        --if (obj == "player") then table.insert(objsTable, Player(screen, v.x, y)) end
+        if (obj == "coin") then table.insert(objsTable, Coin(screen, v.x, y)) end
     end
 end
 

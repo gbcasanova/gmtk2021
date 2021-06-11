@@ -8,8 +8,8 @@ return {
   height = 30,
   tilewidth = 32,
   tileheight = 32,
-  nextlayerid = 3,
-  nextobjectid = 1,
+  nextlayerid = 4,
+  nextobjectid = 8,
   properties = {},
   tilesets = {
     {
@@ -36,7 +36,12 @@ return {
       properties = {},
       wangsets = {},
       tilecount = 49,
-      tiles = {}
+      tiles = {
+        {
+          id = 28,
+          type = "coin"
+        }
+      }
     }
   },
   layers = {
@@ -136,6 +141,105 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 3,
+      name = "Objects",
+      visible = false,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 1,
+          name = "",
+          type = "coin",
+          shape = "rectangle",
+          x = 96,
+          y = 160,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 29,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 2,
+          name = "",
+          type = "coin",
+          shape = "rectangle",
+          x = 192,
+          y = 160,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 29,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 3,
+          name = "",
+          type = "coin",
+          shape = "rectangle",
+          x = 288,
+          y = 160,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 29,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 5,
+          name = "",
+          type = "coin",
+          shape = "rectangle",
+          x = 384,
+          y = 160,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 29,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 6,
+          name = "",
+          type = "coin",
+          shape = "rectangle",
+          x = 192,
+          y = 224,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 29,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 7,
+          name = "",
+          type = "coin",
+          shape = "rectangle",
+          x = 288,
+          y = 224,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 29,
+          visible = true,
+          properties = {}
+        }
       }
     }
   }
