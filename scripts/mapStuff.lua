@@ -24,7 +24,7 @@ function mapStuff.createObjects(screen, map, layer, objsTable)
     -- Iterate through every object.
     for i, v in pairs(layer.objects) do
         local obj = v.type -- Get object name.
-        local y = v.y - 32 -- Y origin.
+        local y = v.y - 32 - 1 -- Y origin.
 
         -- Create objects.
         if (obj == "coin") then table.insert(objsTable, Coin(screen, v.x, y)) end
