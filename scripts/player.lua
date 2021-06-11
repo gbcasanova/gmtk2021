@@ -1,5 +1,5 @@
 -- Libs.
-local flux   = require("libs.flux")
+local flux = require("libs.flux")
 local anim8  = require("libs.anim8")
 local Object = require("libs.classic")
 --------------------------------------
@@ -33,7 +33,6 @@ function Player:new(scr, x, y)
 end
 
 function Player:update(dt)
-    flux.update(dt)
     self.anim.current:update(dt)
 
     -- Movement.
