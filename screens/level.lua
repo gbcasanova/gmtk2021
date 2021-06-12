@@ -64,7 +64,7 @@ function screen:Load(ScreenManager)
     love.graphics.setFont(self.assets.fonts["gameboy"])
     self.livesSpr = self.assets.sprites["lives"]
     local g = anim8.newGrid(75, 21, self.livesSpr:getWidth(), self.livesSpr:getHeight())
-    self.frame = g:getFrames(1, 1, 1, 2, 1, 3)
+    self.frame = g:getFrames(1, 1, 1, 2, 1, 3, 1, 4)
 end
 
 function screen:Update(dt)

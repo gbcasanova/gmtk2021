@@ -18,7 +18,7 @@ function Player:new(scr, x, y)
     self.spd = 150
     self.moving = false
     self.canMove = true
-    self.lives = 3
+    self.lives = 4
 
     -- Create sprite.
     self.sprite = scr.assets.sprites["drkarlovisky"]
@@ -36,6 +36,12 @@ function Player:new(scr, x, y)
     self.camVar.x, self.camVar.y = self.x, self.y
 
     scr.world:add(self, self.x, self.y, self.w, self.h) -- Add to collision world.
+end
+
+function Player:hurt()
+    if (self.lives > 1) then
+        self.lives = self.lives - 1
+    end
 end
 
 function Player:update(dt)
