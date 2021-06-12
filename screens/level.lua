@@ -27,7 +27,10 @@ local function loadAssets()
     assets.sfx = {}
     assets.sfx["coin"] = love.audio.newSource("assets/sfx/coin.wav", "static")
     assets.sfx["step"] = love.audio.newSource("assets/sfx/footstep.ogg", "static")
+    assets.sfx["hurt"] = love.audio.newSource("assets/sfx/hurt.ogg", "static")
+    assets.sfx["death"] = love.audio.newSource("assets/sfx/death.ogg", "static")
     assets.sfx["bounce"] = love.audio.newSource("assets/sfx/bounce.ogg", "static")
+    assets.sfx["switch"] = love.audio.newSource("assets/sfx/switch.wav", "static")
 
     -- Fonts.
     assets.fonts = {}

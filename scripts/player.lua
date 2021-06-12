@@ -51,9 +51,11 @@ function Player:hurt()
         if (self.lives >= 3) then
             self.hurtTimer = self.hurtMax
             self.lives = self.lives - 1
+            self.scr.assets.sfx["hurt"]:play()
         else
             self.scr:resetScreen()
             self.dying = true
+            self.scr.assets.sfx["death"]:play()
         end
     end
 end
