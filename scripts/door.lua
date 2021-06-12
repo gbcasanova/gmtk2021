@@ -33,7 +33,7 @@ function Door:update(dt)
     Door.super.update(self, dt)
 
     if (self.type == "grey") then
-        if (self.scr.greySwitch) then
+        if (self.scr.greyButton) then
             self.index = 2
         else
             self.index = 1

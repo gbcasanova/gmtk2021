@@ -72,8 +72,8 @@ function screen:Load(ScreenManager)
 
     -- Switches.
     self.coins = 0
-    self.greySwitch = false
-    self.redSwitch = false
+    self.greyButton = false
+    self.redButton = false
 end
 
 function screen:Update(dt)

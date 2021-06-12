@@ -34,7 +34,7 @@ function Button:update(dt)
     -- Activate button.
     if (self.type == "grey") then
         if (CheckCollision(self.x, self.y, self.w, self.h, player.x, player.y, player.w, player.h)) then
-            self.scr.greySwitch = true
+            self.scr.greyButton = true
             self.index = 2
         end
     end
