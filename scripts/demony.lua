@@ -9,7 +9,7 @@ local Entity = require("scripts.entity")
 local Demony = Entity:extend()
 
 function Demony:new(scr, x, y, limiter)
-    Demony.super.new(self, scr, x, y, 26, 4)
+    Demony.super.new(self, scr, x, y, 30, 4)
     self.name = "Demony"
 
     -- Sprite.
@@ -61,13 +61,13 @@ function Demony:update(dt)
     end
 
     -- Move towards player.
-    flux.to(self, self.spd, {x = self.scr.objects.player.x})
-    flux.to(self, self.spd, {y = self.scr.objects.player.y})
+    flux.to(self, self.spd, {x = player.x})
+    flux.to(self, self.spd, {y = player.y})
 
     -- Flip animation.
-    if (self.scr.objects.player.x > self.x) then
+    if (player.x > self.x) then
         flux.to(self, self.flipSpd, {flip = 1})
-    elseif (self.scr.objects.player.x < self.x) then
+    elseif (player.x < self.x) then
         flux.to(self, self.flipSpd, {flip = -1})
     end
 
