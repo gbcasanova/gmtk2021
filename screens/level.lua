@@ -26,6 +26,7 @@ local function loadAssets()
     assets.sfx = {}
     assets.sfx["coin"] = love.audio.newSource("assets/sfx/coin.wav", "static")
     assets.sfx["bounce"] = love.audio.newSource("assets/sfx/bounce.ogg", "static")
+    assets.sfx["step"] = love.audio.newSource("assets/sfx/footstep.wav", "static")
 
     return assets
 end
