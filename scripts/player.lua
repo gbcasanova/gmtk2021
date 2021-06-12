@@ -107,7 +107,10 @@ function Player:update(dt)
     flux.to(self.camVar, 0.5, {x = (self.x + self.sprW/2) - (self.sprW/2 - self.w/2)})
     flux.to(self.camVar, 0.5, {y = (self.y + self.sprH/2) - (self.sprH - self.h)})
 
-    self.scr.camera:setPosition(self.camVar.x, self.camVar.y)
+    self.scr.camera:setPosition(
+        math.floor(self.camVar.x + 0.5), 
+        math.floor(self.camVar.y + 0.5)
+    )
 
     -- Hurt timer.
     if (self.hurtTimer > 0) then
