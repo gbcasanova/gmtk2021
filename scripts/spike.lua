@@ -14,7 +14,7 @@ end
 local Spike = Entity:extend()
 
 function Spike:new(scr, x, y)
-    Spike.super.new(self, scr, x, y, 34, 34)
+    Spike.super.new(self, scr, x, y + 17, 34, 17)
 
     -- Sprite.
     self.sprite = scr.assets.sprites["tileset"]
