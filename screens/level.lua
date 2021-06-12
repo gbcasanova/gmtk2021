@@ -44,6 +44,8 @@ function screen:Load(ScreenManager)
     -- Camera.
     self.camera = gamera.new(0,0,2000,2000)
     self.camera:setWindow(0, 0, _G.gameWidth, _G.gameHeight)
+    self.fade = {r=0, g=0, b=0}
+    flux.to(self.fade, 4, {r=1, g=1, b=1})
 
     -- Create objects.
     self.objects = {}
@@ -69,6 +71,8 @@ function screen:Update(dt)
 end
 
 function screen:Draw()
+    love.graphics.setColor(self.fade.r, self.fade.g, self.fade.b)
+
     -- Draw inside camera.
     self.camera:draw(function(l,t,w,h)
         self.map:draw()
