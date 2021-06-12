@@ -35,6 +35,7 @@ local function loadAssets()
     -- Fonts.
     assets.fonts = {}
     assets.fonts["gameboy"] = love.graphics.newFont("assets/fonts/gameboy.ttf", 8)
+    assets.fonts["gameboyBig"] = love.graphics.newFont("assets/fonts/gameboy.ttf", 24)
 
     return assets
 end
@@ -65,10 +66,16 @@ function screen:Load(ScreenManager)
     flux.to(self.fade, 2, {r=1, g=1, b=1})
 
     -- UI.
-    love.graphics.setFont(self.assets.fonts["gameboy"])
     self.livesSpr = self.assets.sprites["lives"]
     local g = anim8.newGrid(75, 21, self.livesSpr:getWidth(), self.livesSpr:getHeight())
     self.frame = g:getFrames(1, 1, 1, 2, 1, 3, 1, 4)
+    self.levelTxt = {}
+    self.levelTxt.string = love.graphics.newText(self.assets.fonts["gameboyBig"], "LEVEL " .. _G.currentLevel)
+    self.levelTxt.x = _G.gameWidth/2 - self.levelTxt.string:getWidth()/2
+    self.levelTxt.y = -self.levelTxt.string:getHeight()
+    flux.to(self.levelTxt, 1, {y = 0})
+        :after(self.levelTxt, 2, {y = -self.levelTxt.string:getHeight()})
+        :delay(3)
 
     -- Switches.
     self.coins = 0
@@ -125,6 +132,8 @@ function screen:Draw()
 
     -- Draw UI.
     love.graphics.draw(self.livesSpr, self.frame[self.objects.player.lives], _G.gameWidth - 85, 10)
+    love.graphics.draw(self.levelTxt.string, self.levelTxt.x, self.levelTxt.y)
+    love.graphics.setFont(self.assets.fonts["gameboy"])
     love.graphics.print("COINS: " .. self.coins , 10, 15)
 end
 
