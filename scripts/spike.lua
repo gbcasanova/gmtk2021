@@ -23,8 +23,10 @@ function Spike:new(scr, x, y)
     self.frame = g:getFrames(7, 5)
 
     -- Center object on original position.
-    --self.x = (self.x + self.sprW) - self.w
-    --self.y = (self.y + self.sprH) - self.h
+    self.x = (self.x + self.sprW) - self.w
+    self.y = (self.y + self.sprH) - self.h
+    local actualX, actualY, cols, len = self.scr.world:move(self, self.x, self.y)
+    self.x, self.y = actualX, actualY
 end
 
 function Spike:update(dt)
@@ -32,7 +34,7 @@ function Spike:update(dt)
 
     local player = self.scr.objects.player
 
-    -- Destroy object.
+    -- Destroy object (This is so dumb. I'm only doing this because i forgot how to use BUMP properly.)
     if CheckCollision(self.x - 1, self.y - 1, self.w + 2, self.h + 2, player.x, player.y, player.w, player.h) then
         player:hurt()
     end
