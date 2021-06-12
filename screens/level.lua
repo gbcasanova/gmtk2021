@@ -125,7 +125,12 @@ function screen:Draw()
 end
 
 function screen:resetScreen()
-    self.ScreenManager:SwitchStates("level")
+    local function resetLevel()
+        self.ScreenManager:SwitchStates("level")
+    end
+
+    self.paused = true
+    flux.to(self.fade, 2, {r=0, g=0, b=0}):oncomplete(resetLevel)
 end
 
 function screen:MousePressed(x, y, button)
