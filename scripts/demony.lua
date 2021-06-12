@@ -9,7 +9,7 @@ local Entity = require("scripts.entity")
 local Demony = Entity:extend()
 
 function Demony:new(scr, x, y, limiter)
-    Demony.super.new(self, scr, x, y, 34, 35)
+    Demony.super.new(self, scr, x, y, 26, 4)
     self.name = "Demony"
 
     -- Sprite.
@@ -87,9 +87,11 @@ end
 function Demony:draw()
     Demony.super.draw(self)
 
+    -- Draw line centered on the
+    -- sprite.
     love.graphics.line(
-        (self.x + self.sprW/2), 
-        (self.y + self.sprH/2), 
+        (self.x + self.sprW/2) - (self.sprW/2 - self.w/2), 
+        (self.y + self.sprH/2) - (self.sprH - self.h), 
         self.scr.objects.player.x + 3, 
         self.scr.objects.player.y + 6
     )
@@ -98,8 +100,8 @@ function Demony:draw()
     -- the collision box.
     self.anim.current:draw(
         self.sprite, 
-        (self.x + self.sprW/2), 
-        (self.y + self.sprH/2), 
+        (self.x + self.sprW/2) - (self.sprW/2 - self.w/2), 
+        (self.y + self.sprH/2) - (self.sprH - self.h), 
         0, self.flip, 1,
         self.sprW/2,
         self.sprH/2
