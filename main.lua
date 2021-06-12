@@ -10,9 +10,9 @@ function love.load()
     _G.levelMusic:play()
     _G.levels = {
         "assets/tilemaps/level1.lua",
-        "assets/tilemaps/level1.lua"
+        "assets/tilemaps/level2.lua"
     }
-    _G.currentLevel = 1
+    _G.currentLevel = 2
 
     -- Set up screen.
     love.graphics.setDefaultFilter("nearest", "nearest") -- Set's pixel art filter.

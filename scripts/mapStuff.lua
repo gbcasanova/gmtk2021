@@ -1,4 +1,5 @@
 -- Scripts.
+local Life = require("scripts.life")
 local Coin = require("scripts.coin")
 local Door = require("scripts.door")
 local Spike = require("scripts.spike")
@@ -35,6 +36,7 @@ function mapStuff.createObjects(screen, map, layer, objsTable)
 
         -- Create objects.
         if (obj == "player") then objsTable.player = Player(screen, x, y)
+        elseif (obj == "life") then table.insert(objsTable, Life(screen, x, y))
         elseif (obj == "coin") then table.insert(objsTable, Coin(screen, x, y))
         elseif (obj == "spike") then table.insert(objsTable, Spike(screen, x, y))
         elseif (obj == "greyDoor") then table.insert(objsTable, Door(screen, x, y, "grey"))
@@ -42,6 +44,7 @@ function mapStuff.createObjects(screen, map, layer, objsTable)
         elseif (obj == "redDemony") then table.insert(objsTable, Demony(screen, x, y, true))
         elseif (obj == "blueDemony") then table.insert(objsTable, Demony(screen, x, y, false)) 
         elseif (obj == "greyButton") then table.insert(objsTable, Button(screen, x, y, "grey")) 
+        elseif (obj == "redButton") then table.insert(objsTable, Button(screen, x, y, "red"))
         end
     end
 end
