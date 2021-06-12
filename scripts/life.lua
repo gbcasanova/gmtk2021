@@ -30,8 +30,11 @@ function Life:update(dt)
 
     -- Destroy object.
     if CheckCollision(self.x, self.y, self.w, self.h, player.x, player.y, player.w, player.h) then
-        player.lives = player.lives + 1
-        self.alive = false
+        if (player.lives <= 3) then 
+            self.scr.assets.sfx["life"]:play()
+            player.lives = player.lives + 1
+            self.alive = false
+        end
     end
 end
 
