@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 5,
-  nextobjectid = 52,
+  nextobjectid = 54,
   properties = {},
   tilesets = {
     {
@@ -352,20 +352,6 @@ return {
           properties = {}
         },
         {
-          id = 19,
-          name = "",
-          type = "coin",
-          shape = "rectangle",
-          x = 96,
-          y = 768,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          gid = 29,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 20,
           name = "",
           type = "coin",
@@ -562,20 +548,6 @@ return {
           properties = {}
         },
         {
-          id = 42,
-          name = "",
-          type = "coin",
-          shape = "rectangle",
-          x = 64,
-          y = 352,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          gid = 29,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 43,
           name = "",
           type = "coin",
@@ -694,6 +666,34 @@ return {
           shape = "rectangle",
           x = 832,
           y = 480,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 32,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 52,
+          name = "",
+          type = "life",
+          shape = "rectangle",
+          x = 64,
+          y = 352,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 32,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 53,
+          name = "",
+          type = "life",
+          shape = "rectangle",
+          x = 64,
+          y = 768,
           width = 32,
           height = 32,
           rotation = 0,
