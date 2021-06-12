@@ -82,6 +82,7 @@ function screen:Load(ScreenManager)
     self.coins = 0
     self.greyButton = false
     self.redButton = false
+    self.blueButton = false
 end
 
 function screen:Update(dt)

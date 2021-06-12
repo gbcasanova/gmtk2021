@@ -24,6 +24,7 @@ function Door:new(scr, x, y, type)
 
     if (type == "grey") then self.frame = g:getFrames(1, 2,  2, 2) 
     elseif (type == "red") then self.frame = g:getFrames(1, 3, 2, 3) 
+    elseif (type == "blue") then self.frame = g:getFrames(1, 4, 2, 4) 
     end
 
     self.index = 1
@@ -39,6 +40,10 @@ function Door:update(dt)
             self.index = 2
         end
         if (self.type == "red" and self.scr.redButton == true) then
+            self.scr.world:remove(self)
+            self.index = 2
+        end
+        if (self.type == "blue" and self.scr.blueButton == true) then
             self.scr.world:remove(self)
             self.index = 2
         end

@@ -39,13 +39,18 @@ function mapStuff.createObjects(screen, map, layer, objsTable)
         elseif (obj == "life") then table.insert(objsTable, Life(screen, x, y))
         elseif (obj == "coin") then table.insert(objsTable, Coin(screen, x, y))
         elseif (obj == "spike") then table.insert(objsTable, Spike(screen, x, y))
+
         elseif (obj == "greyDoor") then table.insert(objsTable, Door(screen, x, y, "grey"))
         elseif (obj == "redDoor") then table.insert(objsTable, Door(screen, x, y, "red"))
+        elseif (obj == "blueDoor") then table.insert(objsTable, Door(screen, x, y, "blue"))
         elseif (obj == "endLevel") then table.insert(objsTable, EndLevel(screen, x, y)) 
+
         elseif (obj == "redDemony") then table.insert(objsTable, Demony(screen, x, y, true))
         elseif (obj == "blueDemony") then table.insert(objsTable, Demony(screen, x, y, false)) 
+    
         elseif (obj == "greyButton") then table.insert(objsTable, Button(screen, x, y, "grey")) 
         elseif (obj == "redButton") then table.insert(objsTable, Button(screen, x, y, "red"))
+        elseif (obj == "blueButton") then table.insert(objsTable, Button(screen, x, y, "blue"))
         end
     end
 end

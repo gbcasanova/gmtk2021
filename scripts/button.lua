@@ -24,6 +24,7 @@ function Button:new(scr, x, y, type)
     local g = anim8.newGrid(self.w, self.h, self.sprite:getWidth(), self.sprite:getHeight())
     if (type == "grey") then self.frame = g:getFrames(5, 5,  6, 5) 
     elseif (type == "red") then self.frame = g:getFrames(5, 6,  6, 6) 
+    elseif (type == "blue") then self.frame = g:getFrames(5, 8,  6, 8)
     end
 
     self.index = 1
@@ -42,19 +43,24 @@ function Button:update(dt)
             end
         end
 
-        if (self.type == "red") then
+        if (self.type == "red" or self.type == "blue") then
             for i, v in pairs(self.scr.objects) do
                 if (v.name == "Demony") then 
-                    if (CheckCollision(self.x, self.y, self.w, self.h, v.x, v.y, v.w, v.h) and 
-                    v.limiter == true) then
-                        self.scr.redButton = true
+                    if (CheckCollision(self.x, self.y, self.w, self.h, v.x, v.y, v.w, v.h)) then
+                        if (v.limiter == true) then
+                            self.scr.redButton = true
+                            self.scr.assets.sfx["switch"]:play()
+                        else
+                            self.scr.blueButton = true
+                            self.scr.assets.sfx["switch"]:play()
+                        end
+
                         self.index = 2
-                        self.scr.assets.sfx["switch"]:play()
                     end
                 end
             end
         end
-        
+
     end
 end
 
