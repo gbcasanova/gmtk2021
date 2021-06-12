@@ -4,7 +4,7 @@ _G.push = require("libs.push")
 ---------------------------------------------------
 
 function love.load()
-    _G.gameDebug = true
+    _G.gameDebug = false
 
     _G.levels = {
         "assets/tilemaps/level.lua",
