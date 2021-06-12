@@ -83,9 +83,25 @@ function screen:Draw()
         self.map:draw()
 
         -- Draw objects.
+        local playerDrawn = false
         table.sort(self.objects, sortVertically)
-        for i, v in pairs(self.objects) do
+        for i, v in ipairs(self.objects) do
+
+            if playerDrawn == false and v.y > self.objects.player.y then
+                -- If the character is above the objects,
+                -- draw below them.
+                playerDrawn = true
+                self.objects.player:draw()
+            end
             v:draw()
+        end
+
+        -- Leave the foor loop so the action
+        -- doesn't repeat for every single object.
+        if playerDrawn == false then
+            -- If the character is below the objects,
+            -- draw above them.
+            self.objects.player:draw()
         end
     end)
 end
