@@ -128,10 +128,12 @@ function Player:update(dt)
                 :oncomplete(playingTween)
         end
     end
+
+    print(self.hurtTimer)
 end
 
 function Player:draw()
-    love.graphics.setColor(self.scr.fade.r, self.scr.fade.g, self.scr.fade.b, self.opacity)
+    love.graphics.setColor(1, 1, 1, self.opacity)
 
     -- Draw debug outline.
     if (_G.gameDebug) then
