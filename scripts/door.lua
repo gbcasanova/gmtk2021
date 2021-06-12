@@ -30,13 +30,13 @@ function Door:new(scr, x, y, type)
 end
 
 function Door:update(dt)
-    Door.super.update(self, dt)
+    --Door.super.update(self, dt)
 
-    if (self.type == "grey") then
-        if (self.scr.greyButton) then
+    -- Open door.
+    if (self.index == 1) then
+        if (self.type == "grey" and self.scr.greyButton == true) then
+            self.scr.world:remove(self)
             self.index = 2
-        else
-            self.index = 1
         end
     end
 end
