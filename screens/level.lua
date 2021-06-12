@@ -6,8 +6,6 @@ local cartographer = require("libs.cartographer")
 
 -- Scripts.
 local mapStuff = require("scripts.mapStuff")
-local Demony = require("scripts.demony")
-local Player = require("scripts.player")
 ----------------------------------------
 
 local function loadAssets()
@@ -46,12 +44,11 @@ function screen:Load(ScreenManager)
     self.camera = gamera.new(0,0,2000,2000)
     self.camera:setWindow(0, 0, _G.gameWidth, _G.gameHeight)
     self.fade = {r=0, g=0, b=0}
-    flux.to(self.fade, 4, {r=1, g=1, b=1})
+    flux.to(self.fade, 5, {r=1, g=1, b=1})
 
     -- Create objects.
     self.objects = {}
     self.world = bump.newWorld()
-    self.objects.player = Player(self, 100, 100)
     self.map = cartographer.load("assets/tilemaps/level.lua")
     mapStuff.createObjects(self, self.map, self.map.layers.Objects, self.objects)
     mapStuff.createSolids(self, self.map, self.map.layers.Solid, self.objects)

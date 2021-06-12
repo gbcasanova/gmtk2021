@@ -1,6 +1,7 @@
 -- Scripts.
 local Coin = require("scripts.coin")
 local Demony = require("scripts.demony")
+local Player = require("scripts.player")
 local Entity = require("scripts.entity")
 ----------------------------------------
 
@@ -28,7 +29,7 @@ function mapStuff.createObjects(screen, map, layer, objsTable)
         local y = v.y - 32 - 1 -- Y origin.
 
         -- Create objects.
-        if (obj == "player") then screen.objects.player.x = v.x screen.objects.player.y = y
+        if (obj == "player") then objsTable.player = Player(screen, v.x, y)
         elseif (obj == "coin") then table.insert(objsTable, Coin(screen, v.x, y))
         elseif (obj == "redDemony") then table.insert(objsTable, Demony(screen, v.x, y, true))
         elseif (obj == "blueDemony") then table.insert(objsTable, Demony(screen, v.x, y, false)) 
