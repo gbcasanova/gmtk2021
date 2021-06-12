@@ -32,7 +32,7 @@ function Player:new(scr, x, y)
 
     -- Camera.
     self.camVar = {}
-    self.camVar.x, self.camVar.y = 0, 0
+    self.camVar.x, self.camVar.y = self.x, self.y
 
     scr.world:add(self, self.x, self.y, self.w, self.h) -- Add to collision world.
 end
