@@ -7,8 +7,8 @@ function love.load()
     _G.gameDebug = false
 
     _G.levels = {
-        "assets/tilemaps/level.lua",
-        "assets/tilemaps/level.lua"
+        "assets/tilemaps/level1.lua",
+        "assets/tilemaps/level1.lua"
     }
     _G.currentLevel = 1
 
