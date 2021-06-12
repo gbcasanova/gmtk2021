@@ -1,21 +1,20 @@
 -- Libs.
 local anim8 = require("libs.anim8")
+local Object = require("libs.classic")
+-----------------------------------------
 
--- Scripts.
-local Entity = require("scripts.entity")
---------------------------------------
-function CheckCollision(x1,y1,w1,h1, x2,y2,w2,h2)
+local function CheckCollision(x1,y1,w1,h1, x2,y2,w2,h2)
     return x1 < x2+w2 and
            x2 < x1+w1 and
            y1 < y2+h2 and
            y2 < y1+h1
 end
 
-local Button = Entity:extend()
+local Button = Object:extend()
 
 function Button:new(scr, x, y, type)
-    Button.super.new(self, scr, x, y, 34, 34)
     self.type = type
+    self.scr = scr
 
     -- Sprite.
     self.sprite = scr.assets.sprites["tileset"]
@@ -30,20 +29,18 @@ function Button:new(scr, x, y, type)
 end
 
 function Button:update(dt)
-    Button.super.update(self, dt)
+    local player = self.scr.objects.player
 
+    -- Activate button.
     if (self.type == "grey") then
-        if (self.scr.greySwitch) then
+        if (CheckCollision(self.x, self.y, self.w, self.h, player.x, player.y, player.w, player.h)) then
+            self.scr.greySwitch = true
             self.index = 2
-        else
-            self.index = 1
         end
     end
 end
 
 function Button:draw()
-    Button.super.draw(self, dt)
-
     -- Draw sprite centered and above
     -- the collision box.
     love.graphics.draw(
