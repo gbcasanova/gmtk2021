@@ -42,21 +42,27 @@ function Player:update(dt)
     -- Movement.
     self.moving = false
     if (self.canMove) then
+        local walkSound = self.scr.assets.sfx["step"]
+
         if (love.keyboard.isDown("up")) then
             self.moving = true
             self.y = self.y - self.spd * dt
+            if (not walkSound:isPlaying()) then walkSound:play() end
         elseif (love.keyboard.isDown("down")) then
             self.moving = true
             self.y = self.y + self.spd * dt
+            if (not walkSound:isPlaying()) then walkSound:play() end
         end
         if (love.keyboard.isDown("left")) then
             self.moving = true
             self.x = self.x - self.spd * dt
             flux.to(self, self.flipSpd, {flip = 1})
+            if (not walkSound:isPlaying()) then walkSound:play() end
         elseif (love.keyboard.isDown("right")) then
             self.moving = true
             self.x = self.x + self.spd * dt
             flux.to(self, self.flipSpd, {flip = -1})
+            if (not walkSound:isPlaying()) then walkSound:play() end
         end
     end
 
