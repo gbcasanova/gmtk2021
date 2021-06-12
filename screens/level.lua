@@ -15,7 +15,7 @@ local function loadAssets()
 
     -- Sprites.
     assets.sprites = {}
-    assets.sprites["demony"] = love.graphics.newImage("assets/sprites/demony.png")
+    assets.sprites["redDemony"] = love.graphics.newImage("assets/sprites/redDemony.png")
     assets.sprites["tileset"] = love.graphics.newImage("assets/sprites/tileset.png")
     assets.sprites["drkarlovisky"] = love.graphics.newImage("assets/sprites/drkarlovisky.png")
 
@@ -54,10 +54,6 @@ function screen:Load(ScreenManager)
     self.map = cartographer.load("assets/tilemaps/level.lua")
     mapStuff.createObjects(self, self.map, self.map.layers.Objects, self.objects)
     mapStuff.createSolids(self, self.map, self.map.layers.Solid, self.objects)
-
-    table.insert(self.objects, Demony(self, 50, 50, false))
-    table.insert(self.objects, Demony(self, 50+34, 50, true))
-    table.insert(self.objects, Demony(self, 50+34*2, 50, false))
 end
 
 function screen:Update(dt)

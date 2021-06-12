@@ -1,6 +1,7 @@
 -- Scripts.
-local Entity = require("scripts.entity")
 local Coin = require("scripts.coin")
+local Demony = require("scripts.demony")
+local Entity = require("scripts.entity")
 ----------------------------------------
 
 local mapStuff = {}
@@ -27,7 +28,8 @@ function mapStuff.createObjects(screen, map, layer, objsTable)
         local y = v.y - 32 - 1 -- Y origin.
 
         -- Create objects.
-        if (obj == "coin") then table.insert(objsTable, Coin(screen, v.x, y)) end
+        if (obj == "coin") then table.insert(objsTable, Coin(screen, v.x, y))
+        elseif (obj == "demonyRed") then table.insert(objsTable, Demony(screen, v.x, y, false)) end
     end
 end
 
