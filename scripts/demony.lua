@@ -9,7 +9,7 @@ local Entity = require("scripts.entity")
 local Demony = Entity:extend()
 
 function Demony:new(scr, x, y, limiter)
-    Demony.super.new(self, scr, x, y, 30, 4)
+    Demony.super.new(self, scr, x, y, 30, 8)
     self.name = "Demony"
 
     -- Sprite.
