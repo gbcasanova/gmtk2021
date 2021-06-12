@@ -7,12 +7,13 @@ function love.load()
     _G.gameDebug = false
 
     _G.levelMusic = love.audio.newSource("assets/music/levelmusic.mp3", "stream")
-    _G.levelMusic:play()
+    --_G.levelMusic:play()
     _G.levels = {
         "assets/tilemaps/level1.lua",
-        "assets/tilemaps/level2.lua"
+        "assets/tilemaps/level2.lua",
+        "assets/tilemaps/level3.lua"
     }
-    _G.currentLevel = 2
+    _G.currentLevel = 3
 
     -- Set up screen.
     love.graphics.setDefaultFilter("nearest", "nearest") -- Set's pixel art filter.
