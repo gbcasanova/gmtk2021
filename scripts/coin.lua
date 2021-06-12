@@ -22,7 +22,6 @@ function Coin:new(scr, x, y)
     self.sprite = scr.assets.sprites["tileset"]
     local g = anim8.newGrid(self.w, self.h, self.sprite:getWidth(), self.sprite:getHeight())
     self.frame = g:getFrames(1, 5)
-    print(self.frame[1])
 
     self.scr = scr
     self.alive = true
