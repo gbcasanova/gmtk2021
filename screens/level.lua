@@ -53,7 +53,7 @@ function screen:Load(ScreenManager)
     -- Create objects.
     self.objects = {}
     self.world = bump.newWorld(32)
-    self.map = cartographer.load("assets/tilemaps/level.lua")
+    self.map = cartographer.load(_G.levels[_G.currentLevel])
     mapStuff.createObjects(self, self.map, self.map.layers.Objects, self.objects)
     mapStuff.createSolids(self, self.map, self.map.layers.Solid, self.objects)
 

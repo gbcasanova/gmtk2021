@@ -6,6 +6,12 @@ _G.push = require("libs.push")
 function love.load()
     _G.gameDebug = true
 
+    _G.levels = {
+        "assets/tilemaps/level.lua",
+        "assets/tilemaps/level.lua"
+    }
+    _G.currentLevel = 1
+
     -- Set up screen.
     love.graphics.setDefaultFilter("nearest", "nearest") -- Set's pixel art filter.
     _G.gameWidth, _G.gameHeight = 384, 216
