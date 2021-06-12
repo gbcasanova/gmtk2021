@@ -67,6 +67,11 @@ function screen:Update(dt)
     -- Update objects.
     for i, v in pairs(self.objects) do
         v:update(dt)
+
+        -- Remove objects.
+        if (not v.alive) then
+            table.remove(self.objects, i)
+        end
     end
 end
 

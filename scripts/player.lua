@@ -11,6 +11,7 @@ function Player:new(scr, x, y)
     self.x, self.y = x, y
     self.w, self.h = 22, 9
     self.name = "Player"
+    self.alive = true
     
     self.flip = 1
     self.flipSpd = 0.4

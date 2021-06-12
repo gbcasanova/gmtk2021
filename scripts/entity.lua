@@ -10,6 +10,7 @@ function Entity:new(scr, x, y, w, h)
 
     self.name = "Entity"
     self.scr = scr
+    self.alive = true
 
     -- Add to collision world.
     scr.world:add(self, self.x, self.y, self.w, self.h)

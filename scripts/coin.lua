@@ -25,18 +25,16 @@ function Coin:new(scr, x, y)
     print(self.frame[1])
 
     self.scr = scr
+    self.alive = true
 end
 
 function Coin:update(dt)
     local player = self.scr.objects.player
 
+    -- Destroy object.
     if CheckCollision(self.x, self.y, self.w, self.h, player.x, player.y, player.w, player.h) then
-        for i, v in pairs(self.scr.objects) do
-            if (v == self) then
-                self.scr.assets.sfx["coin"]:play()
-                table.remove(self.scr.objects, i)
-            end
-        end
+        self.scr.assets.sfx["coin"]:play()
+        self.alive = false
     end
 end
 
