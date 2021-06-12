@@ -46,16 +46,20 @@ function Button:update(dt)
         for i, v in pairs(self.scr.objects) do
             if (v.name == "Demony") then 
                 if (v.limiter) then
-                    if (CheckCollision(self.x, self.y, self.w, self.h, v.x, v.y, v.w, v.h)) then
-                        self.scr.redButton = true
-                        self.scr.assets.sfx["switch"]:play()
-                        self.index = 2
+                    if (self.type == "red") then
+                        if (CheckCollision(self.x, self.y, self.w, self.h, v.x, v.y, v.w, v.h)) then
+                            self.scr.redButton = true
+                            self.scr.assets.sfx["switch"]:play()
+                            self.index = 2
+                        end
                     end
                 elseif (not v.limiter) then
-                    if (CheckCollision(self.x, self.y, self.w, self.h, v.x, v.y, v.w, v.h)) then
-                        self.scr.blueButton = true
-                        self.scr.assets.sfx["switch"]:play()
-                        self.index = 2
+                    if (self.type == "blue") then
+                        if (CheckCollision(self.x, self.y, self.w, self.h, v.x, v.y, v.w, v.h)) then
+                            self.scr.blueButton = true
+                            self.scr.assets.sfx["switch"]:play()
+                            self.index = 2
+                        end
                     end
                 end
             end
