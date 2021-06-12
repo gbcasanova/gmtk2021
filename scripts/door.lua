@@ -38,6 +38,10 @@ function Door:update(dt)
             self.scr.world:remove(self)
             self.index = 2
         end
+        if (self.type == "red" and self.scr.redButton == true) then
+            self.scr.world:remove(self)
+            self.index = 2
+        end
     end
 end
 
