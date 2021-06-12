@@ -3,6 +3,7 @@
  <image source="../sprites/tileset.png" width="255" height="289"/>
  <tile id="7" type="greyDoor"/>
  <tile id="14" type="redDoor"/>
+ <tile id="21" type="blueDoor"/>
  <tile id="28" type="coin"/>
  <tile id="31" type="life"/>
  <tile id="32" type="greyButton"/>
