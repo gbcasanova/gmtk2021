@@ -18,7 +18,14 @@ function Player:new(scr, x, y)
     self.spd = 150
     self.moving = false
     self.canMove = true
+
+    -- Hurt action, lives, etc.
     self.lives = 4
+    self.hurtSpd = 20
+    self.hurtMax = 100
+    self.hurtTimer = 0
+    self.opacity = 1
+    self.opacityTweenPlaying = false
 
     -- Create sprite.
     self.sprite = scr.assets.sprites["drkarlovisky"]
@@ -39,8 +46,11 @@ function Player:new(scr, x, y)
 end
 
 function Player:hurt()
-    if (self.lives > 1) then
-        self.lives = self.lives - 1
+    if (self.hurtTimer <= 0) then 
+        if (self.lives > 1) then
+            self.hurtTimer = self.hurtMax
+            self.lives = self.lives - 1
+        end
     end
 end
 
@@ -90,9 +100,33 @@ function Player:update(dt)
     flux.to(self.camVar, 0.5, {y = (self.y + self.sprH/2) - (self.sprH - self.h)})
 
     self.scr.camera:setPosition(self.camVar.x, self.camVar.y)
+
+    -- Hurt timer.
+    if (self.hurtTimer > 0) then
+        self.hurtTimer = self.hurtTimer - self.hurtSpd * dt
+
+        -- Hurt Opacity Tween (God help me).
+        local function notPlaying()
+            self.opacityTweenPlaying = true
+        end
+        local function playingTween()
+            self.opacityTweenPlaying = false
+        end
+
+        if (not self.opacityTweenPlaying) then
+            flux.to(self, 1, {opacity = 0.5})
+                :onstart(notPlaying)
+                :after(self, 1, {opacity = 1})
+                :oncomplete(playingTween)
+        end
+    end
+
+    print(self.opacityTweenPlaying)
 end
 
 function Player:draw()
+    love.graphics.setColor(self.scr.fade.r, self.scr.fade.g, self.scr.fade.b, self.opacity)
+
     -- Draw debug outline.
     if (_G.gameDebug) then
         love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
@@ -108,6 +142,8 @@ function Player:draw()
         self.sprW/2,
         self.sprH/2
     )
+
+    love.graphics.setColor(self.scr.fade.r, self.scr.fade.g, self.scr.fade.b, 1)
 end
 
 return Player
