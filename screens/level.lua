@@ -26,8 +26,8 @@ local function loadAssets()
     -- Sound effects.
     assets.sfx = {}
     assets.sfx["coin"] = love.audio.newSource("assets/sfx/coin.wav", "static")
-    assets.sfx["bounce"] = love.audio.newSource("assets/sfx/bounce.ogg", "static")
     assets.sfx["step"] = love.audio.newSource("assets/sfx/footstep.ogg", "static")
+    assets.sfx["bounce"] = love.audio.newSource("assets/sfx/bounce.ogg", "static")
 
     -- Fonts.
     assets.fonts = {}
@@ -57,7 +57,7 @@ function screen:Load(ScreenManager)
     -- Create objects.
     self.coins = 0
     self.objects = {}
-    self.world = bump.newWorld()
+    self.world = bump.newWorld(32)
     self.map = cartographer.load("assets/tilemaps/level.lua")
     mapStuff.createObjects(self, self.map, self.map.layers.Objects, self.objects)
     mapStuff.createSolids(self, self.map, self.map.layers.Solid, self.objects)
