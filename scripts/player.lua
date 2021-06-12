@@ -18,6 +18,7 @@ function Player:new(scr, x, y)
     self.spd = 150
     self.moving = false
     self.canMove = true
+    self.lives = 3
 
     -- Create sprite.
     self.sprite = scr.assets.sprites["drkarlovisky"]

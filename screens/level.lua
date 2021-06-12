@@ -1,6 +1,7 @@
 -- Libs.
 local bump = require("libs.bump")
 local flux = require("libs.flux")
+local anim8 = require("libs.anim8")
 local gamera = require("libs.gamera")
 local cartographer = require("libs.cartographer")
 
@@ -13,6 +14,7 @@ local function loadAssets()
 
     -- Sprites.
     assets.sprites = {}
+    assets.sprites["lives"] = love.graphics.newImage("assets/sprites/ui/lives.png")
     assets.sprites["tileset"] = love.graphics.newImage("assets/sprites/tileset.png")
     assets.sprites["redDemony"] = love.graphics.newImage("assets/sprites/redDemony.png")
     assets.sprites["blueDemony"] = love.graphics.newImage("assets/sprites/blueDemony.png")
@@ -44,7 +46,7 @@ function screen:Load(ScreenManager)
     self.camera = gamera.new(0,0,2000,2000)
     self.camera:setWindow(0, 0, _G.gameWidth, _G.gameHeight)
     self.fade = {r=0, g=0, b=0}
-    flux.to(self.fade, 5, {r=1, g=1, b=1})
+    flux.to(self.fade, 2, {r=1, g=1, b=1})
 
     -- Create objects.
     self.objects = {}
@@ -52,6 +54,11 @@ function screen:Load(ScreenManager)
     self.map = cartographer.load("assets/tilemaps/level.lua")
     mapStuff.createObjects(self, self.map, self.map.layers.Objects, self.objects)
     mapStuff.createSolids(self, self.map, self.map.layers.Solid, self.objects)
+
+    -- UI.
+    self.livesSpr = self.assets.sprites["lives"]
+    local g = anim8.newGrid(75, 21, self.livesSpr:getWidth(), self.livesSpr:getHeight())
+    self.frame = g:getFrames(1, 1, 1, 2, 1, 3)
 end
 
 function screen:Update(dt)
@@ -98,6 +105,9 @@ function screen:Draw()
             self.objects.player:draw()
         end
     end)
+
+    -- Draw UI.
+    love.graphics.draw(self.livesSpr, self.frame[self.objects.player.lives], 10, 10)
 end
 
 function screen:MousePressed(x, y, button)
