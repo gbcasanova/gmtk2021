@@ -4,6 +4,12 @@ local anim8 = require("libs.anim8")
 -- Scripts.
 local Entity = require("scripts.entity")
 --------------------------------------
+function CheckCollision(x1,y1,w1,h1, x2,y2,w2,h2)
+    return x1 < x2+w2 and
+           x2 < x1+w1 and
+           y1 < y2+h2 and
+           y2 < y1+h1
+end
 
 local Spike = Entity:extend()
 
@@ -23,6 +29,13 @@ end
 
 function Spike:update(dt)
     Spike.super.update(self, dt)
+
+    local player = self.scr.objects.player
+
+    -- Destroy object.
+    if CheckCollision(self.x - 1, self.y - 1, self.w + 2, self.h + 2, player.x, player.y, player.w, player.h) then
+        player:hurt()
+    end
 end
 
 function Spike:draw()

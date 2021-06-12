@@ -7,7 +7,7 @@ local cartographer = require("libs.cartographer")
 
 -- Scripts.
 local mapStuff = require("scripts.mapStuff")
-----------------------------------------
+-------------------------------------------------
 
 local function loadAssets()
     local assets = {}
