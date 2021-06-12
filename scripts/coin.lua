@@ -32,6 +32,7 @@ function Coin:update(dt)
 
     -- Destroy object.
     if CheckCollision(self.x, self.y, self.w, self.h, player.x, player.y, player.w, player.h) then
+        self.scr.coins = self.scr.coins + 1
         self.scr.assets.sfx["coin"]:play()
         self.alive = false
     end

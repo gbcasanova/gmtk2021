@@ -29,6 +29,10 @@ local function loadAssets()
     assets.sfx["bounce"] = love.audio.newSource("assets/sfx/bounce.ogg", "static")
     assets.sfx["step"] = love.audio.newSource("assets/sfx/footstep.ogg", "static")
 
+    -- Fonts.
+    assets.fonts = {}
+    assets.fonts["gameboy"] = love.graphics.newFont("assets/fonts/gameboy.ttf", 8)
+
     return assets
 end
 
@@ -49,6 +53,7 @@ function screen:Load(ScreenManager)
     flux.to(self.fade, 2, {r=1, g=1, b=1})
 
     -- Create objects.
+    self.coins = 0
     self.objects = {}
     self.world = bump.newWorld()
     self.map = cartographer.load("assets/tilemaps/level.lua")
@@ -56,6 +61,7 @@ function screen:Load(ScreenManager)
     mapStuff.createSolids(self, self.map, self.map.layers.Solid, self.objects)
 
     -- UI.
+    love.graphics.setFont(self.assets.fonts["gameboy"])
     self.livesSpr = self.assets.sprites["lives"]
     local g = anim8.newGrid(75, 21, self.livesSpr:getWidth(), self.livesSpr:getHeight())
     self.frame = g:getFrames(1, 1, 1, 2, 1, 3)
@@ -107,7 +113,8 @@ function screen:Draw()
     end)
 
     -- Draw UI.
-    love.graphics.draw(self.livesSpr, self.frame[self.objects.player.lives], 10, 10)
+    love.graphics.draw(self.livesSpr, self.frame[self.objects.player.lives], _G.gameWidth - 85, 10)
+    love.graphics.print("COINS: " .. self.coins , 10, 15)
 end
 
 function screen:MousePressed(x, y, button)
