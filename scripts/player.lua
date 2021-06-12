@@ -26,6 +26,7 @@ function Player:new(scr, x, y)
     self.hurtTimer = 0
     self.opacity = 1
     self.opacityTweenPlaying = false
+    self.dying = false
 
     -- Create sprite.
     self.sprite = scr.assets.sprites["drkarlovisky"]
@@ -47,9 +48,12 @@ end
 
 function Player:hurt()
     if (self.hurtTimer <= 0) then 
-        if (self.lives > 1) then
+        if (self.lives >= 3) then
             self.hurtTimer = self.hurtMax
             self.lives = self.lives - 1
+        else
+            self.scr:resetScreen()
+            self.dying = true
         end
     end
 end
@@ -85,8 +89,10 @@ function Player:update(dt)
     end
 
     -- Collision resolution.
-    local actualX, actualY, cols, len = self.scr.world:move(self, self.x, self.y)
-    self.x, self.y = actualX, actualY
+    if (not self.dying) then
+        local actualX, actualY, cols, len = self.scr.world:move(self, self.x, self.y)
+        self.x, self.y = actualX, actualY
+    end
 
     -- Animation.
     if (self.moving) then
@@ -114,9 +120,9 @@ function Player:update(dt)
         end
 
         if (not self.opacityTweenPlaying) then
-            flux.to(self, 1, {opacity = 0.5})
+            flux.to(self, 0.5, {opacity = 0.5})
                 :onstart(notPlaying)
-                :after(self, 1, {opacity = 1})
+                :after(self, 0.5, {opacity = 1})
                 :oncomplete(playingTween)
         end
     end

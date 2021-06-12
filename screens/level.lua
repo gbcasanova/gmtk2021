@@ -45,8 +45,10 @@ local screen = {}
 function screen:Load(ScreenManager)
     collectgarbage()  -- Unload assets.
     self.assets = loadAssets() -- Load assets.
+    self.ScreenManager = ScreenManager
 
     -- Camera.
+    self.paused = false
     self.camera = gamera.new(0,0,2000,2000)
     self.camera:setWindow(0, 0, _G.gameWidth, _G.gameHeight)
     self.fade = {r=0, g=0, b=0}
@@ -71,13 +73,15 @@ function screen:Update(dt)
     flux.update(dt)
     self.map:update(dt)
 
-    -- Update objects.
-    for i, v in pairs(self.objects) do
-        v:update(dt)
+    if (not self.paused) then
+        -- Update objects.
+        for i, v in pairs(self.objects) do
+            v:update(dt)
 
-        -- Remove objects.
-        if (not v.alive) then
-            table.remove(self.objects, i)
+            -- Remove objects.
+            if (not v.alive) then
+                table.remove(self.objects, i)
+            end
         end
     end
 end
@@ -117,8 +121,12 @@ function screen:Draw()
     love.graphics.print("COINS: " .. self.coins , 10, 15)
 end
 
+function screen:resetScreen()
+    self.ScreenManager:SwitchStates("level")
+end
+
 function screen:MousePressed(x, y, button)
-    --
+    self:resetScreen()
 end
 
 function screen:MouseReleased(x, y, button)
