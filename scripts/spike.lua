@@ -14,19 +14,13 @@ end
 local Spike = Entity:extend()
 
 function Spike:new(scr, x, y)
-    Spike.super.new(self, scr, x, y, 33, 11)
+    Spike.super.new(self, scr, x, y, 34, 34)
 
     -- Sprite.
     self.sprite = scr.assets.sprites["tileset"]
     self.sprW, self.sprH = 34, 34
     local g = anim8.newGrid(self.sprW, self.sprH, self.sprite:getWidth(), self.sprite:getHeight())
     self.frame = g:getFrames(7, 5)
-
-    -- Center object on original position.
-    self.x = (self.x + self.sprW) - self.w
-    self.y = (self.y + self.sprH) - self.h
-    local actualX, actualY, cols, len = self.scr.world:move(self, self.x, self.y)
-    self.x, self.y = actualX, actualY
 end
 
 function Spike:update(dt)
