@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 8,
-  nextobjectid = 15,
+  nextobjectid = 16,
   properties = {},
   tilesets = {
     {
@@ -44,6 +44,10 @@ return {
         {
           id = 35,
           type = "redDemony"
+        },
+        {
+          id = 36,
+          type = "player"
         },
         {
           id = 42,
@@ -205,7 +209,7 @@ return {
       draworder = "topdown",
       id = 3,
       name = "Objects",
-      visible = false,
+      visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
@@ -336,6 +340,20 @@ return {
           height = 32,
           rotation = 0,
           gid = 43,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 15,
+          name = "",
+          type = "player",
+          shape = "rectangle",
+          x = 608,
+          y = 576,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 37,
           visible = true,
           properties = {}
         }
