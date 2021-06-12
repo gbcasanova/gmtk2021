@@ -39,7 +39,7 @@ function Demony:update(dt)
 
     -- Limit player movement.
     if (self.limiter) then
-        if (player.x > self.x + self.maxMovement) then
+        if (player.x > self.x + self.maxMovement/1.7) then
             --player.canMove = false
             flux.to(player, 1, {x = self.x})
             self.scr.assets.sfx["bounce"]:play()
