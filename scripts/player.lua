@@ -26,7 +26,7 @@ function Player:new(scr, x, y)
     -- Create animations.
     self.anim = {}
     self.anim["idle"]    = anim8.newAnimation(g('1-4', 1), 0.1)
-    self.anim["walking"] = anim8.newAnimation(g('1-3', 2), 0.05)
+    self.anim["walking"] = anim8.newAnimation(g('1-3', 2), 0.1)
     self.anim.current = self.anim["idle"]
 
     -- Camera.
