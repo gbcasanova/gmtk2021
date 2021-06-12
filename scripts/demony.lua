@@ -83,7 +83,7 @@ function Demony:update(dt)
     for i=1,len do -- If more than one simultaneous collision, they are sorted out by proximity
         local col = cols[i]
         if (col.other.name == "Player") then
-            --print("GAME OVER")
+            col.other:hurt()
         end
     end
 end
