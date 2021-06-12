@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 12,
-  nextobjectid = 83,
+  nextobjectid = 85,
   properties = {},
   tilesets = {
     {
@@ -38,7 +38,7 @@ return {
       tilecount = 56,
       tiles = {
         {
-          id = 4,
+          id = 7,
           type = "greyDoor"
         },
         {
@@ -270,20 +270,6 @@ return {
           properties = {}
         },
         {
-          id = 62,
-          name = "",
-          type = "greyDoor",
-          shape = "rectangle",
-          x = 736,
-          y = 128,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          gid = 5,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 79,
           name = "",
           type = "coin",
@@ -336,6 +322,34 @@ return {
           height = 32,
           rotation = 0,
           gid = 29,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 83,
+          name = "",
+          type = "greyDoor",
+          shape = "rectangle",
+          x = 736,
+          y = 128,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 8,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 84,
+          name = "",
+          type = "greyButton",
+          shape = "rectangle",
+          x = 640,
+          y = 128,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          gid = 33,
           visible = true,
           properties = {}
         }

@@ -129,7 +129,7 @@ function Player:update(dt)
         end
     end
 
-    print(self.hurtTimer)
+    --print(self.hurtTimer)
 end
 
 function Player:draw()

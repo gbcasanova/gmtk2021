@@ -58,7 +58,6 @@ function screen:Load(ScreenManager)
     flux.to(self.fade, 2, {r=1, g=1, b=1})
 
     -- Create objects.
-    self.coins = 0
     self.objects = {}
     self.world = bump.newWorld(32)
     self.map = cartographer.load("assets/tilemaps/level.lua")
@@ -70,6 +69,11 @@ function screen:Load(ScreenManager)
     self.livesSpr = self.assets.sprites["lives"]
     local g = anim8.newGrid(75, 21, self.livesSpr:getWidth(), self.livesSpr:getHeight())
     self.frame = g:getFrames(1, 1, 1, 2, 1, 3, 1, 4)
+
+    -- Switches.
+    self.coins = 0
+    self.greySwitch = false
+    self.redSwitch = false
 end
 
 function screen:Update(dt)
