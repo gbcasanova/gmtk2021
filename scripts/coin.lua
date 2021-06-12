@@ -1,7 +1,5 @@
 -- Libs.
 local anim8 = require("libs.anim8")
-
--- Scripts.
 local Object = require("libs.classic")
 --------------------------------------
 
