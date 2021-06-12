@@ -126,8 +126,6 @@ function Player:update(dt)
                 :oncomplete(playingTween)
         end
     end
-
-    print(self.opacityTweenPlaying)
 end
 
 function Player:draw()
