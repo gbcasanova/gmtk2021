@@ -29,7 +29,9 @@ function mapStuff.createObjects(screen, map, layer, objsTable)
 
         -- Create objects.
         if (obj == "coin") then table.insert(objsTable, Coin(screen, v.x, y))
-        elseif (obj == "demonyRed") then table.insert(objsTable, Demony(screen, v.x, y, false)) end
+        elseif (obj == "redDemony") then table.insert(objsTable, Demony(screen, v.x, y, true))
+        elseif (obj == "blueDemony") then table.insert(objsTable, Demony(screen, v.x, y, false)) 
+        end
     end
 end
 

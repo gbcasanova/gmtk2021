@@ -15,8 +15,9 @@ local function loadAssets()
 
     -- Sprites.
     assets.sprites = {}
-    assets.sprites["redDemony"] = love.graphics.newImage("assets/sprites/redDemony.png")
     assets.sprites["tileset"] = love.graphics.newImage("assets/sprites/tileset.png")
+    assets.sprites["redDemony"] = love.graphics.newImage("assets/sprites/redDemony.png")
+    assets.sprites["blueDemony"] = love.graphics.newImage("assets/sprites/blueDemony.png")
     assets.sprites["drkarlovisky"] = love.graphics.newImage("assets/sprites/drkarlovisky.png")
 
     -- Music.

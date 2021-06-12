@@ -13,7 +13,11 @@ function Demony:new(scr, x, y, limiter)
     self.name = "Demony"
 
     -- Sprite.
-    self.sprite = scr.assets.sprites["redDemony"]
+    if (limiter) then
+        self.sprite = scr.assets.sprites["redDemony"]
+    else
+        self.sprite = scr.assets.sprites["blueDemony"]
+    end
     self.sprW, self.sprH = 34, 35
     local g = anim8.newGrid(self.sprW, self.sprH, self.sprite:getWidth(), self.sprite:getHeight())
 

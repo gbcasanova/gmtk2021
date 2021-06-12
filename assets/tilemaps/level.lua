@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 8,
-  nextobjectid = 11,
+  nextobjectid = 15,
   properties = {},
   tilesets = {
     {
@@ -43,7 +43,11 @@ return {
         },
         {
           id = 35,
-          type = "demonyRed"
+          type = "redDemony"
+        },
+        {
+          id = 42,
+          type = "blueDemony"
         }
       }
     }
@@ -294,11 +298,11 @@ return {
           properties = {}
         },
         {
-          id = 8,
+          id = 11,
           name = "",
-          type = "demonyRed",
+          type = "redDemony",
           shape = "rectangle",
-          x = 416,
+          x = 608,
           y = 512,
           width = 32,
           height = 32,
@@ -308,30 +312,30 @@ return {
           properties = {}
         },
         {
-          id = 9,
+          id = 12,
           name = "",
-          type = "demonyRed",
+          type = "blueDemony",
           shape = "rectangle",
-          x = 352,
-          y = 512,
+          x = 576,
+          y = 480,
           width = 32,
           height = 32,
           rotation = 0,
-          gid = 36,
+          gid = 43,
           visible = true,
           properties = {}
         },
         {
-          id = 10,
+          id = 14,
           name = "",
-          type = "demonyRed",
+          type = "blueDemony",
           shape = "rectangle",
-          x = 384,
-          y = 544,
+          x = 640,
+          y = 480,
           width = 32,
           height = 32,
           rotation = 0,
-          gid = 36,
+          gid = 43,
           visible = true,
           properties = {}
         }
