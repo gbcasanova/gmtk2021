@@ -1,4 +1,4 @@
-# Unnamed GMTK 2021 game.
+# Shoelace! The great misadventures of Dr. Karlovisky and his "Demonies".
 
 ## Credits
 Pinball Spring 160 by Kevin MacLeod
