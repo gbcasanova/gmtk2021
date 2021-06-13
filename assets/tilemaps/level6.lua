@@ -4588,20 +4588,6 @@ return {
           properties = {}
         },
         {
-          id = 439,
-          name = "",
-          type = "spike",
-          shape = "rectangle",
-          x = 448,
-          y = 608,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          gid = 35,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 440,
           name = "",
           type = "spike",
