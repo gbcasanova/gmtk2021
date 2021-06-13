@@ -16,7 +16,7 @@ function love.load()
         "assets/tilemaps/level5.lua",
         "assets/tilemaps/level6.lua",
     }
-    _G.currentLevel = 6
+    _G.currentLevel = 1
 
     -- Set up screen.
     love.graphics.setDefaultFilter("nearest", "nearest") -- Set's pixel art filter.
@@ -28,7 +28,7 @@ function love.load()
         stretched  = false
     })
 
-    ScreenManager:SwitchStates("level")
+    ScreenManager:SwitchStates("menu")
 end
 
 function love.update(dt)
