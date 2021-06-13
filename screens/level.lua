@@ -88,6 +88,7 @@ end
 function screen:Update(dt)
     flux.update(dt)
     self.map:update(dt)
+    _G.levelMusic:setVolume(self.fade.r)
 
     if (not self.paused) then
         -- Update objects.
