@@ -37,7 +37,6 @@ function mapStuff.createObjects(screen, map, layer, objsTable)
 
         -- Create objects.
         if (obj == "player") then objsTable.player = Player(screen, x, y)
-        elseif (obj == "life") then table.insert(objsTable, Life(screen, x, y))
         elseif (obj == "coin") then table.insert(objsTable, Coin(screen, x, y))
         elseif (obj == "spike") then table.insert(objsTable, Spike(screen, x, y))
         elseif (obj == "speeder") then table.insert(objsTable, Speeder(screen, x, y))
@@ -53,6 +52,10 @@ function mapStuff.createObjects(screen, map, layer, objsTable)
         elseif (obj == "greyButton") then table.insert(objsTable, Button(screen, x, y, "grey")) 
         elseif (obj == "redButton") then table.insert(objsTable, Button(screen, x, y, "red"))
         elseif (obj == "blueButton") then table.insert(objsTable, Button(screen, x, y, "blue"))
+        end
+
+        if (_G.normalMode) then
+            if (obj == "life") then table.insert(objsTable, Life(screen, x, y)) end
         end
     end
 end
