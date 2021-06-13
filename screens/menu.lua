@@ -1,6 +1,9 @@
 -- Libs.
 local flux = require("libs.flux")
----------------------------------
+
+-- Scripts.
+local UiButton = require("scripts.ui.uibutton")
+-----------------------------------------
 
 local function loadAssets()
     local assets = {}
@@ -9,6 +12,7 @@ local function loadAssets()
     assets.sprites = {}
     assets.sprites["bg"] = love.graphics.newImage("assets/sprites/ui/background.png")
     assets.sprites["logo"] = love.graphics.newImage("assets/sprites/ui/logo.png")
+    assets.sprites["buttons"] = love.graphics.newImage("assets/sprites/ui/buttons.png")
 
     -- Music.
     assets.music = {}
@@ -25,11 +29,16 @@ local screen = {}
 function screen:Load(ScreenManager) -- pass a reference to the ScreenManager. Avoids circlular require()
     collectgarbage()  -- Unload assets.
     self.assets = loadAssets() -- Load assets.
+    self.ScreenManager = ScreenManager
 
     self.assets.music["newerwave"]:play()
 
     self.fade = {r=0, g=0, b=0}
-    flux.to(self.fade, 7, {r=1, g=1, b=1})
+    flux.to(self.fade, 4, {r=1, g=1, b=1})
+    self.fading = false
+
+    self.easyButton = UiButton(self, 152, 130, 1)
+    self.normalButton = UiButton(self, 152, 155, 2)
 
     -- Logo.
     self.logo = {}
@@ -44,6 +53,9 @@ end
 function screen:Update(dt)
     flux.update(dt)
     self.assets.music["newerwave"]:setVolume(self.fade.r)
+
+    self.easyButton:update(dt)
+    self.normalButton:update(dt)
 end
 
 function screen:Draw()
@@ -70,10 +82,35 @@ function screen:Draw()
         self.logo.x, 
         self.logo.y
     )
+
+    self.easyButton:draw()
+    self.normalButton:draw()
 end
 
 function screen:MousePressed(x, y, button)
-    --
+    local function switch()
+        self.ScreenManager:SwitchStates("level")
+        love.audio.stop()
+        self.ScreenManager:SwitchStates("level")
+        _G.levelMusic:play()
+    end
+
+    local function easyFunc()
+        self.fading = true
+        _G.normalMode = true
+        flux.to(self.fade, 4, {r=0, g=0, b=0}):oncomplete(switch)
+    end
+
+    local function hardFunc()
+        self.fading = true
+        _G.normalMode = false
+        flux.to(self.fade, 4, {r=0, g=0, b=0}):oncomplete(switch)
+    end
+
+    if (not self.fading) then
+        self.easyButton:mousepressed(x,y,button, easyFunc)
+        self.normalButton:mousepressed(x,y,button,hardFunc)
+    end
 end
 
 function screen:MouseReleased(x, y, button)
