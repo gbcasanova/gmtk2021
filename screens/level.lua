@@ -101,6 +101,11 @@ function screen:Update(dt)
             end
         end
     end
+
+    -- Loop level music.
+    if (not _G.levelMusic:isPlaying()) then
+        _G.levelMusic:play()
+    end
 end
 
 function screen:Draw()
