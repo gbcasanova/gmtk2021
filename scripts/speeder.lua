@@ -30,7 +30,7 @@ function Speeder:update(dt)
 
     -- Destroy object.
     if CheckCollision(self.x, self.y, self.w, self.h, player.x, player.y, player.w, player.h) then
-        player.x = player.x + player.spd/4 * dt
+        player.x = player.x + player.spd/5 * dt
     end
 end
 
