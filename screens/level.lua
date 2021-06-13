@@ -155,7 +155,7 @@ function screen:resetScreen()
 end
 
 function screen:MousePressed(x, y, button)
-    self:resetScreen()
+    --
 end
 
 function screen:MouseReleased(x, y, button)
