@@ -43,6 +43,7 @@ end
 
 function screen:Update(dt)
     flux.update(dt)
+    self.assets.music["newerwave"]:setVolume(self.fade.r)
 end
 
 function screen:Draw()
