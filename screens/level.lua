@@ -147,7 +147,7 @@ end
 
 function screen:resetScreen()
     local function resetLevel()
-        if _G.currentLevel <= 5 then
+        if _G.currentLevel <= 6 then
             self.ScreenManager:SwitchStates("level")
         else
             self.ScreenManager:SwitchStates("endgame")
