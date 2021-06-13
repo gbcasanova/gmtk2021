@@ -147,13 +147,8 @@ end
 
 function screen:resetScreen()
     local function resetLevel()
-        if _G.currentLevel + 1 <= 5 then
-            if self.objects.player.dying == false then
-                _G.currentLevel = _G.currentLevel + 1
-                self.ScreenManager:SwitchStates("level")
-            else
-                self.ScreenManager:SwitchStates("level")
-            end
+        if _G.currentLevel <= 5 then
+            self.ScreenManager:SwitchStates("level")
         else
             self.ScreenManager:SwitchStates("endgame")
         end

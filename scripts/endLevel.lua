@@ -36,6 +36,7 @@ function EndLevel:update(dt)
 
     -- Destroy object.
     if CheckCollision(self.x, self.y, self.w, self.h, player.x, player.y, player.w, player.h) then
+        _G.currentLevel = _G.currentLevel + 1
         self.scr:resetScreen()
     end
 
