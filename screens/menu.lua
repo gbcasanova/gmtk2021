@@ -12,6 +12,7 @@ local function loadAssets()
 
     -- Music.
     assets.music = {}
+    assets.music["newerwave"] = love.audio.newSource("assets/music/newerwave.mp3", "stream")
 
     -- Sound effects.
     assets.sfx = {}
@@ -25,6 +26,12 @@ function screen:Load(ScreenManager) -- pass a reference to the ScreenManager. Av
     collectgarbage()  -- Unload assets.
     self.assets = loadAssets() -- Load assets.
 
+    self.assets.music["newerwave"]:play()
+
+    self.fade = {r=0, g=0, b=0}
+    flux.to(self.fade, 7, {r=1, g=1, b=1})
+
+    -- Logo.
     self.logo = {}
     self.logo.sprite = self.assets.sprites["logo"]
     self.logo.tweenPlaying = false
@@ -39,6 +46,7 @@ function screen:Update(dt)
 end
 
 function screen:Draw()
+    love.graphics.setColor(self.fade.r, self.fade.g, self.fade.b)
     love.graphics.draw(self.assets.sprites["bg"], 0, 0)
 
     -- Loop tween animation.
