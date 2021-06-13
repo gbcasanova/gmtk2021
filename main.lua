@@ -28,7 +28,7 @@ function love.load()
         stretched  = false
     })
 
-    ScreenManager:SwitchStates("level")
+    ScreenManager:SwitchStates("menu")
 end
 
 function love.update(dt)
