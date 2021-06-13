@@ -2,6 +2,7 @@
 <tileset version="1.5" tiledversion="1.6.0" name="tileset" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="56" columns="7">
  <image source="../sprites/tileset.png" width="255" height="289"/>
  <tile id="7" type="greyDoor"/>
+ <tile id="10" type="speeder"/>
  <tile id="14" type="redDoor"/>
  <tile id="21" type="blueDoor"/>
  <tile id="28" type="coin"/>
