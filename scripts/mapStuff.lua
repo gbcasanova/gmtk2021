@@ -7,6 +7,7 @@ local Button = require("scripts.button")
 local Demony = require("scripts.demony")
 local Player = require("scripts.player")
 local Entity = require("scripts.entity")
+local Speeder = require("scripts.speeder")
 local EndLevel = require("scripts.endLevel")
 ----------------------------------------
 
@@ -39,6 +40,7 @@ function mapStuff.createObjects(screen, map, layer, objsTable)
         elseif (obj == "life") then table.insert(objsTable, Life(screen, x, y))
         elseif (obj == "coin") then table.insert(objsTable, Coin(screen, x, y))
         elseif (obj == "spike") then table.insert(objsTable, Spike(screen, x, y))
+        elseif (obj == "speeder") then table.insert(objsTable, Speeder(screen, x, y))
 
         elseif (obj == "greyDoor") then table.insert(objsTable, Door(screen, x, y, "grey"))
         elseif (obj == "redDoor") then table.insert(objsTable, Door(screen, x, y, "red"))
