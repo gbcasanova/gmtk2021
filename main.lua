@@ -15,7 +15,6 @@ function love.load()
         "assets/tilemaps/level4.lua",
         "assets/tilemaps/level5.lua",
         "assets/tilemaps/level6.lua",
-        "assets/tilemaps/level7.lua",
     }
     _G.currentLevel = 1
 
@@ -29,7 +28,7 @@ function love.load()
         stretched  = false
     })
 
-    ScreenManager:SwitchStates("menu")
+    ScreenManager:SwitchStates("endgame")
 end
 
 function love.update(dt)
