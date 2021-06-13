@@ -30,6 +30,7 @@ end
 local gameStates = { -- this is where you set the directories of your screens
 	["menu"] = require("screens.menu");
 	["level"] = require("screens.level");
+	["endgame"] = require("screens.endgame");
 	["exampleScreen"] = require("screens.exampleScreen");
 }
 
