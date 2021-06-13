@@ -28,7 +28,7 @@ function love.load()
         stretched  = false
     })
 
-    ScreenManager:SwitchStates("endgame")
+    ScreenManager:SwitchStates("level")
 end
 
 function love.update(dt)

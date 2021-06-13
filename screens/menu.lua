@@ -31,6 +31,7 @@ function screen:Load(ScreenManager) -- pass a reference to the ScreenManager. Av
     self.assets = loadAssets() -- Load assets.
     self.ScreenManager = ScreenManager
 
+    _G.currentLevel = 1
     love.audio.stop()
     self.assets.music["newerwave"]:play()
 

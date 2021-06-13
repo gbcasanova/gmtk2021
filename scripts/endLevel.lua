@@ -37,7 +37,6 @@ function EndLevel:update(dt)
     -- Destroy object.
     if CheckCollision(self.x, self.y, self.w, self.h, player.x, player.y, player.w, player.h) then
         self.scr:resetScreen()
-        _G.currentLevel = _G.currentLevel + 1
     end
 
     -- Loop tween animation.
