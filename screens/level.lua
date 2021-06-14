@@ -83,14 +83,6 @@ function screen:Load(ScreenManager)
     self.greyButton = false
     self.redButton = false
     self.blueButton = false
-
-    gooi.newJoy({
-        x = 4,
-        y = 8,
-        size = 100, -- width and height
-        deadZone = 0.2, -- deadzone = 20%
-        image = "assets/sprites/ui/dpad.png",
-    })
 end
 
 function screen:Update(dt)
@@ -112,7 +104,7 @@ function screen:Update(dt)
 
     -- Loop level music.
     if (not _G.levelMusic:isPlaying()) then
-        --_G.levelMusic:play()
+        _G.levelMusic:play()
     end
 end
 
@@ -150,6 +142,7 @@ function screen:Draw()
     love.graphics.draw(self.livesSpr, self.frame[self.objects.player.lives], _G.gameWidth - 85, 10)
     love.graphics.draw(self.levelTxt.string, self.levelTxt.x, self.levelTxt.y)
     love.graphics.setFont(self.assets.fonts["gameboy"])
+    local touches = love.touch.getTouches()
     love.graphics.print("COINS: " .. self.coins , 10, 15)
 end
 

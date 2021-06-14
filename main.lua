@@ -1,5 +1,4 @@
 -- Libs.
-require("libs.gooi")
 local ScreenManager = require("libs.ScreenManager")
 _G.push = require("libs.push")
 ---------------------------------------------------
@@ -40,7 +39,6 @@ function love.draw()
     push:start()
         ScreenManager:Draw()
     push:finish()
-    gooi.draw()
 end
 
 function love.resize(w, h)
@@ -57,12 +55,10 @@ end
 
 function love.mousepressed(x, y, button)
     ScreenManager:MousePressed(x, y, button)
-    gooi.pressed()
 end
 
 function love.mousereleased(x, y, button)
     ScreenManager:MouseReleased(x, y, button)
-    gooi.released()
 end
 
 function love.mousemoved(x, y, dx, dy, istouch)
