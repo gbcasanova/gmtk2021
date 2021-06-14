@@ -83,6 +83,14 @@ function screen:Load(ScreenManager)
     self.greyButton = false
     self.redButton = false
     self.blueButton = false
+
+    gooi.newJoy({
+        x = 4,
+        y = 8,
+        size = 100, -- width and height
+        deadZone = 0.2, -- deadzone = 20%
+        image = "assets/sprites/ui/dpad.png",
+    })
 end
 
 function screen:Update(dt)
@@ -104,7 +112,7 @@ function screen:Update(dt)
 
     -- Loop level music.
     if (not _G.levelMusic:isPlaying()) then
-        _G.levelMusic:play()
+        --_G.levelMusic:play()
     end
 end
 
