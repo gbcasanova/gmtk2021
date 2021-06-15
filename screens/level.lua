@@ -7,6 +7,7 @@ local cartographer = require("libs.cartographer")
 
 -- Scripts.
 local mapStuff = require("scripts.mapStuff")
+local Joystick = require("scripts.ui.joystick")
 -------------------------------------------------
 
 local function loadAssets()
@@ -83,6 +84,9 @@ function screen:Load(ScreenManager)
     self.greyButton = false
     self.redButton = false
     self.blueButton = false
+
+    -- Joystick.
+    self.joystick = Joystick(self, 10, 115)
 end
 
 function screen:Update(dt)
@@ -106,6 +110,8 @@ function screen:Update(dt)
     if (not _G.levelMusic:isPlaying()) then
         _G.levelMusic:play()
     end
+
+    self.joystick:update(dt)
 end
 
 function screen:Draw()
@@ -144,6 +150,23 @@ function screen:Draw()
     love.graphics.setFont(self.assets.fonts["gameboy"])
     local touches = love.touch.getTouches()
     love.graphics.print("COINS: " .. self.coins , 10, 15)
+
+    self.joystick:draw()
+end
+
+function screen:TouchPressed(id, x, y)
+    local tx, ty = push:toGame(x, y)
+    self.joystick:touchpressed(id, tx, ty)
+end
+
+function screen:TouchMoved(id, x, y)
+    local tx, ty = push:toGame(x, y)
+    self.joystick:touchmoved(id, tx, ty)
+end
+
+function screen:TouchReleased(id, x, y)
+    local tx, ty = push:toGame(x, y)
+    self.joystick:touchreleased(id, tx, ty)
 end
 
 function screen:resetScreen()
