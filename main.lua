@@ -21,9 +21,9 @@ function love.load()
     -- Set up screen.
     love.graphics.setDefaultFilter("nearest", "nearest") -- Set's pixel art filter.
     _G.gameWidth, _G.gameHeight = 384, 216
-    local windowWidth, windowHeight = _G.gameWidth*3, _G.gameHeight*3
+    local windowWidth, windowHeight = _G.gameWidth, _G.gameHeight
     _G.push:setupScreen(_G.gameWidth, _G.gameHeight, windowWidth, windowHeight, {
-        fullscreen = false,
+        fullscreen = true,
         resizable  = true,
         stretched  = true
     })
@@ -63,4 +63,16 @@ end
 
 function love.mousemoved(x, y, dx, dy, istouch)
     ScreenManager:MouseMoved(x, y, dx, dy, istouch)
+end
+
+function love.touchpressed(id, x, y)
+    ScreenManager:TouchPressed(id, x, y)
+end
+
+function love.touchmoved(id, x, y)
+    ScreenManager:TouchMoved(id, x, y)
+end
+
+function love.touchreleased(id, x, y)
+    ScreenManager:TouchReleased(id, x, y)
 end

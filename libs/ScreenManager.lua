@@ -126,6 +126,30 @@ function self:MouseMoved(x, y, dx, dy, istouch)
 		end
 	end
 end
+
+function self:TouchPressed(id, x, y)
+	if currState ~= nil then
+		if gameStates[currState].TouchPressed then
+			gameStates[currState]:TouchPressed(id, x, y)
+		end
+	end
+end
+
+function self:TouchMoved(id, x, y)
+    if currState ~= nil then
+		if gameStates[currState].TouchPressed then
+			gameStates[currState]:TouchMoved(id, x, y)
+		end
+	end
+end
+
+function self:TouchReleased(id, x, y)
+    if currState ~= nil then
+		if gameStates[currState].TouchReleased then
+			gameStates[currState]:TouchReleased(id, x, y)
+		end
+	end
+end
 puts("ScreenManager class initialized successfully!")
 -----------------------
 return self
