@@ -1,5 +1,7 @@
 # Shoelace! The great misadventures of Dr. Karlovisky and his "Demonies".
 
+## Download the game [here](https://casanovagames.itch.io/shoelace)
+
 ## Credits
 Pinball Spring 160 by Kevin MacLeod
 Link: https://incompetech.filmmusic.io/song/4217-pinball-spring-160
